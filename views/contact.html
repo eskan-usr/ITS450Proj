@@ -1,0 +1,38 @@
+<div class="box alt">
+	<div class="left-top-corner">
+		<div class="right-top-corner">
+			<div class="border-top">
+			</div>
+		</div>
+	</div>
+	<div class="border-left">
+		<div class="border-right">
+			<div class="inner">
+			<?php
+			$sql = "SELECT * FROM posts ORDER BY id DESC";
+       				 $res = mysqli_query($link, $sql) or die(mysqli_error());
+       				 $posts = "";
+
+       				 if(mysqli_num_rows($res) > 0) {
+               				 while($row = mysqli_fetch_assoc($res)) {
+                       				 $id = $row['id'];
+                       				 $title = $row['title'];
+                       				 $content = $row['content'];
+                       				 $date = $row['date'];
+
+                       				 $post .= "<div><h2><a href='posts.php?pid=$id'>$title</a></h2><h3>$date</h3><p>$content</p></div>";
+               				 }
+					echo $posts;
+       				 } else {
+           			      echo "No posts yet!";
+        			 }
+			?>
+			</div>
+		</div>
+	</div>
+	<div class="left-bot-corner">
+		<div class="right-bot-corner">
+			<div class="border-bot">
+			</div>
+		</div>
+</div>
